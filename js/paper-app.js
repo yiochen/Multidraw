@@ -12,12 +12,13 @@ fb.on('child_added', function (snapshot) {
     
     child.on("child_added", function (newSeg) {
         var newPoint = newSeg.val();
+        
         if (newPoint.end) {
-            console.log("new seg ends!");
             child.off();
         } else {
             nPath.add(new Point(newPoint.x, newPoint.y));
         }
+        view.draw();
     });
 });
 
