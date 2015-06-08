@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.firebase.com/js/client/2.2.6/firebase.js"></script>
+    <!-- Load the Paper.js library -->
+    <script type="text/javascript" src="js/paper-full.js"></script>
+    <!-- Define inlined PaperScript associate it with myCanvas -->
+    <script type="text/paperscript" src="js/paper-app.js" canvas="myCanvas"></script>
+    <style>
+        body{
+            background:black;
+        }
+        canvas{
+            background:white;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" keepalive="true" style="height:800px; width:800px;"></canvas>
+</body>
+
+</html>
