@@ -3,6 +3,14 @@ var path;
 var pathRef;
 var paths = [];
 tool.minDistance = 10;
+
+document.querySelector('#clear').addEventListener('click',function(){
+//    document.querySelector('#clear_notice').style.display="block";
+    fb.remove();
+    project.activeLayer.removeChildren();
+    view.draw();
+//    document.querySelector('#clear_notice').style.display="none";
+});
 fb.on('child_added', function (snapshot) {
     var sPoint = snapshot.val();
     var nPath = new Path();

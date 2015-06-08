@@ -10,18 +10,33 @@
     <style>
         body{
             background:black;
+            color:white;
         }
         canvas{
             background:white;
+            display:inline-block;
         }
         #active{
             color:grey;
+        }
+        #clear{
+            float:right;
+        }
+        #clear_notice{
+            position:fixed;
+            top:100px;
+            color:purple;
+            font-size: 96px;
+            display:none;
         }
     </style>
 </head>
 
 <body>
+    <h1>Draw on the white canvas</h1>
     <canvas id="myCanvas" keepalive="true" style="height:800px; width:800px;"></canvas>
+    <h1 id="clear_notice">Clearing</h1>
+    <button id="clear">Clear</button>
 </body>
 
 </html>
