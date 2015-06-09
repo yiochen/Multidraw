@@ -6,13 +6,21 @@ tool.minDistance = 10;
 
 document.querySelector('#clear').addEventListener('click',function(){
 //    document.querySelector('#clear_notice').style.display="block";
-    fb.remove();
-    project.activeLayer.removeChildren();
-    view.draw();
+    fb.push({clear:true});
 //    document.querySelector('#clear_notice').style.display="none";
 });
+function clear(){
+    fb.remove();
+    pathRef=null;
+    project.activeLayer.removeChildren();
+    view.draw();
+}
 fb.on('child_added', function (snapshot) {
     var sPoint = snapshot.val();
+    if (sPoint.clear){
+        clear();
+        return;
+    }
     var nPath = new Path();
     var child = fb.child(snapshot.key());
 //    nPath.add(new Point(sPoint.x, sPoint.y));
@@ -35,7 +43,6 @@ function onMouseDown(e) {
     //    path.strokeColor="black";
     //    path.add(e.point);
     pathRef = fb.push();
-
     pathRef.push({
         x: e.point.x,
         y: e.point.y
@@ -44,16 +51,22 @@ function onMouseDown(e) {
 
 function onMouseDrag(e) {
     //    path.add(e.point);
-    pathRef.push({
+    if (pathRef){
+        pathRef.push({
         x: e.point.x,
         y: e.point.y
     });
+    }
+    
 }
 
 function onMouseUp(e) {
     //    path.smooth();
     //    path= new Path();
-    pathRef.push({
-        end: true
-    });
+    if (pathRef){
+        pathRef.push({
+            end: true
+        });
+    }
+    
 }
